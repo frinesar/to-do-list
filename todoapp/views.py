@@ -1,24 +1,19 @@
-import re
-from django.http import HttpResponse
-from django.shortcuts import render
+from django.http import HttpResponse, HttpResponseRedirect
+from django.urls import reverse_lazy
+
+from django.views.generic.edit import CreateView
+from django.shortcuts import redirect, render
 from .models import Task
 from datetime import datetime
 
+from .forms import AddTaskForm
+
 
 def index(request):
-    Task.objects.create(title='Стоматолог', text='Прием у стоматолога на 16:00')
 
-
-    records = ''
-    # if tasks := Task.objects.filter(time_stamp__lt=datetime(2022, 6, 30, 16, 7)):
     if tasks := Task.objects.all():
-        for task in tasks:
-            
-            records += str(f'{task.pk} \t {task.title} \t {task.text} \t {task.time_stamp} \t {task.is_finished}\n')
-            
-
-        return HttpResponse(records, content_type='text/plain; charset=utf-8')
-
+        context = {'tasks': tasks, 'title': 'ToDoList'}
+        return render(request, 'todoapp/index.html', context)
     else:
         return HttpResponse('No records')
 
@@ -27,3 +22,34 @@ def get_by_author_name(request, author_id):
     tasks = Task.objects.filter(author=author_id)
     context = {'tasks': tasks}
     return render(request, 'todoapp/index.html', context)
+
+
+
+def test(request):
+    return render(request, 'todoapp/index.html')
+
+
+def add_new_task(request):
+    if request.method == 'POST':
+        form = AddTaskForm(request.POST)
+        if form.is_valid():
+            try:
+                form.save()
+                return redirect('/')
+            except:
+                print('Unable to add new task')
+
+    else:
+        form = AddTaskForm()
+        context = {'form': form}
+        return render(request, 'todoapp/index.html', context)
+
+
+class TaskCreateView(CreateView):
+
+    form_class = AddTaskForm
+    success_url = reverse_lazy('index')
+    template_name = 'todoapp/index.html'
+
+    def get_context_data(self, **kwargs):
+        return super().get_context_data(**kwargs)

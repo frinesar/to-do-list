@@ -1,18 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    {% for task in tasks %}
-        <p>{{task.title}}</p>
-        <p>{{task.pk}}</p>
-        <p>{{task.text}}</p>
-        <p>{{task.is_finished}}</p>
+{% extends 'todoapp/base.html' %}
 
-    {% endfor %}
-</body>
-</html>
+{% block content %}
+
+{% if tasks %}
+    <div class="task_list">
+        {% for task in tasks %}
+        <div class="task">
+            <p class="heading">{{task.title}}</p>
+            <p class="details">{{task.text}}</p>
+            <p class="time">{{task.time_stamp}}</p>
+        </div>
+         
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if form %}
+        <form action="{% url 'add_task' %}" method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit">Add</button>
+        </form>
+    {% endif %}
+
+{% endblock %}

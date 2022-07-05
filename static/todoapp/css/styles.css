@@ -1,0 +1,75 @@
+body {
+    margin: 0;
+    background-color: #0443AF;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+.container{
+    margin: 0 auto;
+    width: 80%;
+}
+
+img{
+    height: 50px;
+    width: 50px;
+}
+
+a{
+    text-decoration: none;
+}
+
+.logo_button{
+    display: inline-block;
+    border: 1px solid;
+    padding: 10px 100px;
+    border-radius: 25px;
+    background-color: transparent;
+    color: white;
+    font-size: 24px;
+    font-weight: 900;
+}
+
+header{
+    margin: auto;
+    padding: 40px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.content{
+    color: white;
+    font-size: 16px;
+    padding: 100px 0px;
+}
+
+.task_list{
+    column-count: 4;
+    column-gap: 30px;
+
+}
+
+.task{
+    display: inline-block;
+    margin: 0px 0px 30px 0px;
+    width: 250px;
+    border: 2px solid white;
+    border-radius: 25px;
+    width: 100%;
+
+}
+
+.task p{
+    padding: 20px 25px;
+}
+
+.heading{
+    font-size: 24px;
+    font-weight: 900;
+}
+
+.details{
+    font-size: 16px;
+}
