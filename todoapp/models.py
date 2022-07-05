@@ -20,7 +20,7 @@ class Author(models.Model):
 class Task(models.Model):
 
     author = models.ForeignKey('Author', null=True, on_delete=models.PROTECT, verbose_name='Автор')
-    title = models.CharField(max_length=25, verbose_name='Задание')
+    title = models.CharField(max_length=25, verbose_name='Задание') 
     text = models.TextField(blank=True, verbose_name='Текст')
     time_stamp = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
     is_finished = models.BooleanField(default=False, verbose_name='Выполнено')

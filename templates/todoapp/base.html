@@ -14,11 +14,11 @@
 <body>
     <div class="container">
         <header>
-            <a href="#">
+            <a href="{% url 'create_task' %}">
                 <img src="{% static 'todoapp/images/add.svg' %}">
             </a>
 
-            <a href="#" class="logo_button">To-do list</a>
+            <a href="{% url 'index' %}" class="logo_button">To-do list</a>
 
             <a href="#">
                 <img src="{% static 'todoapp/images/login.svg' %}">

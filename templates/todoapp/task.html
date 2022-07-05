@@ -1,0 +1,32 @@
+{% extends 'todoapp/base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+
+{% if form %}
+    <form action="{% url 'create_task' %}" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">Add</button>
+    </form>
+{% endif %}
+
+
+
+{% if task %}
+    <div class="task">
+        <div class="wrapper_heading">
+            <a class="heading">{{task.title}}</a>
+            <a href="#">
+                <img src="{% static 'todoapp/images/delete.svg' %}" class="delete_img">
+            </a>
+        </div>
+            <p class="details">{{task.text}}</p>
+            <p class="time">{{task.time_stamp}}</p>
+        </div>
+    </div>
+{% endif %}
+
+{% endblock %}
