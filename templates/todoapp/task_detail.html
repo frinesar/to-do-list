@@ -1,0 +1,15 @@
+{% extends 'todoapp/base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+{% if form %}
+    <form action="{% url 'create_task' %}" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">Add</button>
+    </form>
+{% endif %}
+
+{% endblock %}

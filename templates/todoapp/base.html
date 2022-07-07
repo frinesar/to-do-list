@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;900&display=swap" rel="stylesheet">
-    <title>{{title}}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'todoapp/css/styles.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'todoapp/css/task_form.css' %}" type="text/css" />
 </head>
 <body>
     <div class="container">
@@ -18,10 +18,10 @@
                 <img src="{% static 'todoapp/images/add.svg' %}">
             </a>
 
-            <a href="{% url 'index' %}" class="logo_button">To-do list</a>
+            <a href="{% url 'tasks' %}" class="logo_button">To-do list</a>
 
             <a href="#">
-                <img src="{% static 'todoapp/images/login.svg' %}">
+                <img src="{% static 'todoapp/images/logout.svg' %}">
             </a>
         </header>
 

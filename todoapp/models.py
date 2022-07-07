@@ -4,12 +4,12 @@ from turtle import mode
 from django.db import models
 
 
-class Author(models.Model):
+class User(models.Model):
     name = models.CharField(max_length=25, verbose_name='Автор')
 
     class Meta:
-        verbose_name = 'Автор'
-        verbose_name_plural = 'Авторы'
+        verbose_name = 'Пользователь'
+        verbose_name_plural = 'Пользователи'
         ordering = ['name']
 
 
@@ -19,9 +19,9 @@ class Author(models.Model):
 
 class Task(models.Model):
 
-    author = models.ForeignKey('Author', null=True, on_delete=models.PROTECT, verbose_name='Автор')
+    user = models.ForeignKey('User', null=True, on_delete=models.CASCADE, verbose_name='Пользователь', blank=True)
     title = models.CharField(max_length=25, verbose_name='Задание') 
-    text = models.TextField(blank=True, verbose_name='Текст')
+    description = models.TextField(blank=True, verbose_name='Описание')
     time_stamp = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
     is_finished = models.BooleanField(default=False, verbose_name='Выполнено')
 

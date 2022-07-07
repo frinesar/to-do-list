@@ -1,0 +1,35 @@
+{% extends 'todoapp/base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+{% if tasks %}
+    <div class="task_list">
+        {% for task in tasks %}
+            <div class="task">
+                {% if task.is_finished %}
+                    <div class="wrapper_heading">
+                        <a href="update/{{task.pk}}/" class="heading" style="text-decoration: line-through; font-weight: 600;">{{task.title}}</a>
+                        <a href="/delete/{{task.pk}}">
+                            <img src="{% static 'todoapp/images/delete.svg' %}" class="delete_img">
+                        </a>
+                    </div>
+                    <p class="details">Done</p>
+                    <p class="time">{{task.time_stamp}}</p>
+                {% else %}
+                    <div class="wrapper_heading">
+                        <a href="update/{{task.pk}}/" class="heading">{{task.title}}</a>
+                        <a href="/delete/{{task.pk}}">
+                            <img src="{% static 'todoapp/images/delete.svg' %}" class="delete_img">
+                        </a>
+                    </div>
+                    <p class="details">{{task.description}}</p>
+                    <p class="time">{{task.time_stamp}}</p>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+{% endblock %}

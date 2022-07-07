@@ -1,0 +1,15 @@
+{% extends 'todoapp/base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+
+<form class="task_delete" method="post">
+    {% csrf_token %}
+
+    <h1>Wonna delete {{task.title}}?</h1>
+    <button type="submit">Yeap</button>
+</form>
+
+{% endblock %}
