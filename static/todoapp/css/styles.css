@@ -49,7 +49,7 @@ header{
 .content{
     color: white;
     font-size: 16px;
-    padding: 100px 0px;
+    padding-top: 100px;
 }
 
 .task_list{

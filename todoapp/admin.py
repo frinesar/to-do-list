@@ -8,11 +8,5 @@ class TaskAdmin(admin.ModelAdmin):
     search_fields = ('title', 'description')
 
 
-class AuthorAdmin(admin.ModelAdmin):
-    list_display = ('name',)
-    list_display_links = ('name',)
-    search_fields = ('name',)
-
 
 admin.site.register(Task, TaskAdmin)
-admin.site.register(User, AuthorAdmin)

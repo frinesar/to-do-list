@@ -1,0 +1,14 @@
+{% extends 'todoapp/base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<form class="task_login" method="post">
+    {% csrf_token %}
+
+    {{form.as_p}}
+    <button type="submit">Log in</button>
+</form>
+
+{% endblock %}

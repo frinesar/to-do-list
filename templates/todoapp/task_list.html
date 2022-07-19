@@ -4,6 +4,8 @@
 
 {% load static %}
 
+<h2>{{greetings}}, {{request.user}}!</h2>
+
 {% if tasks %}
     <div class="task_list">
         {% for task in tasks %}

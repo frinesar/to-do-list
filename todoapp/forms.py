@@ -1,3 +1,4 @@
+from django.contrib.auth.forms import AuthenticationForm
 from django.forms import *
 from .models import *
 
@@ -20,3 +21,15 @@ class UpdateTaskForm(ModelForm):
             'title': TextInput(attrs={'class': 'title'}),
             'description': Textarea(attrs={'class': 'description'}),
         }
+
+
+class LoginForm(AuthenticationForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['username'].widget.attrs.update(
+            {'class': 'username'}
+        )
+
+        self.fields['password'].widget.attrs.update(
+            {'class': 'password'}
+        )   

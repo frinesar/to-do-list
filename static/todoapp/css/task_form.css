@@ -1,14 +1,33 @@
-.task_create, .task_delete {
+.task_create, .task_delete, .task_login{
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    border: 2px solid white;
+    border-radius: 25px;
+    padding: 50px;
+    margin: auto;
+    width: 50%;
     
 }
 
+.task_login{
+    width: 30%;
+}
 
-.title {
+
+
+
+.title{
     height: 20px;
     width: 70%;
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+}
+
+.title, .username, .password {
+    height: 20px;
     border-radius: 5px;
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
@@ -23,12 +42,19 @@
     font-size: 16px;
 }
 
-.task_create > p {
+.task_create > p, .task_login > p {
     display: flex;
-    width: 40%;
+    width: 100%;
     align-items: center;
     justify-content: space-between;
 }
+
+
+.task_create > p > label, .task_login > p > label {
+    font-size: 20px;
+}
+
+
 
 
 input[type="checkbox"] {
@@ -53,4 +79,30 @@ button:hover{
     background-color: white;
     color: #0443AF;
     transition: 0.5s;
+}
+
+
+
+
+@media only screen and (max-width: 1368px) {
+    .task_create, .task_delete {
+        width: 70%;
+    }
+
+    .task_login{
+        width: 40%;
+    }
+
+    
+}
+  
+
+@media only screen and (max-width: 950px) {
+    .task_list {
+        column-count: 2;
+    }
+
+    .task_login{
+        width: 70%;
+    }
 }
