@@ -1,11 +1,14 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse_lazy, reverse
 
-from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from django.views.generic.edit import CreateView, DeleteView, UpdateView, FormView
 from django.views.generic.list import ListView 
 from django.views.generic.detail import DetailView
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login
+
 
 
 from django.shortcuts import redirect, render
@@ -25,7 +28,7 @@ class TasksListView(LoginRequiredMixin, ListView):
     model = Task
     context_object_name = 'tasks'
     
-    greetings = ['Hello there', "How it's doing", 'Good to see you']
+    greetings = ['Hello there', "How you doing", 'Good to see you']
 
 
     def get_context_data(self, *args, **kwargs):
@@ -80,3 +83,17 @@ class TaskLoginView(LoginView):
     def get_success_url(self):
         return reverse_lazy('tasks')
 
+
+class SigninView(FormView):
+    template_name = 'todoapp/task_register.html'
+    form_class = UserCreationForm
+    redirect_authenticated_user = True
+    success_url = reverse_lazy('tasks')
+
+    def form_valid(self, form):
+        user = form.save()
+        if user is not None:
+            login(self.request, user)
+        return super(SigninView, self).form_valid(form)
+
+    

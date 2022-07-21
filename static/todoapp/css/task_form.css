@@ -12,8 +12,27 @@
 }
 
 .task_login{
+    
     width: 30%;
+    font-size: 20px;
 }
+
+
+span {
+    line-height: 24px;
+}
+
+
+.task_register{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid white;
+    border-radius: 25px;
+    padding: 50px;
+    width: 50%;
+}
+
 
 
 
@@ -50,7 +69,7 @@
 }
 
 
-.task_create > p > label, .task_login > p > label {
+.task_create > p > label, task > p > label {
     font-size: 20px;
 }
 
@@ -81,6 +100,28 @@ button:hover{
     transition: 0.5s;
 }
 
+
+.task_register > button {
+    width: 300px;
+    margin: auto;
+    margin-top: 50px;
+}
+
+
+.create_new {
+    margin: auto;
+    margin-top: 50px;
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    gap: 0px 10px;
+}
+
+
+.create_new > a {
+    text-decoration: underline;
+    color: white;
+}
 
 
 

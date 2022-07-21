@@ -4,14 +4,14 @@
 
 {% load static %}
 
-<form class="task_login" method="post">
+<form class="task_register" method="post">
     {% csrf_token %}
 
     {{form.as_p}}
-    <button type="submit">Log in</button>
+    <button type="submit">Sign in</button>
     <div class="create_new">
-        <p>Don't have one?</p>
-        <a href="{% url 'signin' %}">Create new</a>
+        <p>Already have one?</p>
+        <a href="{% url 'login' %}">Log in</a>
     </div>
 </form>
 
