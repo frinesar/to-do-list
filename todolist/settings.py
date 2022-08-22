@@ -12,10 +12,9 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
-import sqlite3
+import django_heroku
 import dj_database_url
-from dotenv import load_dotenv, find_dotenv
-
+from decouple import config
 
 
 
@@ -47,7 +46,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'todoapp',
-    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -86,11 +84,11 @@ WSGI_APPLICATION = 'todolist.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-load_dotenv(find_dotenv)
-
 DATABASES = {
-    'default': dj_database_url.config(default='sqlite:///db.sqlite3',
-    conn_max_age=600, ssl_require=False)
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
 
@@ -148,4 +146,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = 'login'
 
-# django_heroku.settings(locals())
+django_heroku.settings(locals())
